@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title Sortr
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"
+    = csrf_meta_tags
+    
+  body.group
+  
+    = render :partial => "layouts/forms/new_tag"
+    = render :partial => "layouts/forms/new_entry"
+      
+    #container
+    
+      header.group
+        h1 = link_to "Sortr", root_path
+        
+        = link_to "New Tag", "#", :id => "new-tag"
+        = link_to "New Entry", "#", :id => "new-entry"
+        
+      = yield
+      

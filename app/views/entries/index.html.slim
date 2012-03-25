@@ -1,0 +1,15 @@
+= form_tag 'browse', :remote => true, :id => "browse" do
+  h2 Tags
+  -Tag.all.each do |tag|
+    = check_box_tag "browse[#{tag.name}]", "#{tag.name}", false, :class => "browse-tags"
+    = label_tag "browse[#{tag.name}]", "#{tag.name} ", :class => "draggable", :id => "#{tag.name}"
+    
+= link_to "Email All #{@entries.count}", "mailto:#{@emails}", :id => "email"
+
+= form_tag 'search', :remote => true, :id => "search" do
+  = text_field_tag :search, nil, :placeholder => "Search..."
+  = link_to "x", '#', :id => 'clear', :style => "display:none;"
+  
+ul#entries
+  = render @entries
+      

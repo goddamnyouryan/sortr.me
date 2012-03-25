@@ -1,0 +1,15 @@
+$("ul#entries").html("<%= escape_javascript(render :partial => 'entries/entry', :collection => @entries) %>");
+$("a#email").replaceWith("<%= escape_javascript(link_to "Email All #{@entries.count}", "mailto:#{@emails}", :id => 'email') %>");
+$(".draggable").draggable({
+  helper: 'clone'
+});
+$(".droppable").droppable({
+	drop: function(event, ui) {
+		var entryId, tagId;
+		tagId = ui.draggable.attr("id");
+		entryId = $(this).attr("id");
+		$.ajax({
+			url: "retag?tag=" + tagId + "&entry=" + entryId
+		});
+	}
+});

@@ -1,0 +1,24 @@
+#new-entry.group
+  = form_tag "entries", :method => :post, :id => "new_entry" do
+  
+    h2 New Entry
+
+    p
+      = label_tag :name
+      br
+      = text_field_tag :name
+
+
+    p
+      = label_tag :email
+      br
+      = text_field_tag :email
+      
+    h3 Select Tags:
+
+    p
+      -Tag.all.each do |tag|
+        = check_box_tag "tags[#{tag.name}]", "#{tag.name}"
+        = label_tag "tags[#{tag.name}]", "#{tag.name}"
+
+    p= submit_tag

@@ -1,0 +1,1 @@
+$("ul#tags_<%= @entry.id %>").html("<%= escape_javascript(render :partial => 'entries/tags', :collection => @entry.tags.map(&:name), :as => :name, :locals => { :entry => @entry }) %>");

@@ -1,0 +1,11 @@
+#new-tag.group
+  = form_for Tag.new do |f|
+  
+    h2 New Tag
+  
+    p
+      = f.label :name
+      br
+      = f.text_field :name
+    
+    p= f.submit

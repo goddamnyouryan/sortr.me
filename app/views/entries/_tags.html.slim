@@ -1,0 +1,3 @@
+li
+  - @tag = Tag.find_by_name(name)
+  = link_to name, tag_path(@tag, :entry => entry.id), :remote => true, :method => :delete, :class => "tag"

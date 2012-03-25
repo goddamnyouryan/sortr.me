@@ -1,0 +1,11 @@
+li class="droppable group" id="#{entry.id}"
+  #content
+    h2= entry.name
+    p= link_to entry.email, "mailto:#{entry.email}"
+  
+  ul id="tags_#{entry.id}" class="group"
+    = render :partial => "entries/tags", :collection => entry.tags.map(&:name), :as => :name, :locals => { :entry => entry }
+  
+  = link_to "delete", entry_path(entry), :method => :delete, :remote => true, :class => "delete", 
+                                         :confirm => "Are you sure you want to delete this entry?"
+      
