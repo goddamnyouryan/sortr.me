@@ -7,7 +7,7 @@ gem 'rails', '3.2.2'
 group :development do
   gem 'sqlite3'
 end
-gem :production do
+group :production do
  gem 'pg'
 end
 gem 'slim'
