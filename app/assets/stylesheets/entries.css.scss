@@ -107,6 +107,11 @@ form#browse {
 	padding: 0 20px 0 0;
 }
 
+form#browse label {
+	float: left;
+	margin-bottom: 10px;
+}
+
 .ui-draggable-dragging {
 	z-index: 99999999;
 }
@@ -114,7 +119,7 @@ form#browse {
 a#email {
 	float: left;
 	text-decoration: none;
-	margin-top: 30px;
+	margin: 30px 0 0 360px;
 }
 
 form#search {
@@ -147,6 +152,7 @@ ul#entries {
 	padding: 0;
 	float: right;
 	width: 600px;
+	margin: 37px 0 0 360px;
 }
 
 ul#entries li.droppable {
@@ -173,6 +179,8 @@ ul#entries li p a {
 	text-decoration: none;
 	font-size: 12px;
 }
+
+ul#entries li p a:hover { text-decoration: underline; }
 
 ul#entries li ul { padding: 0; margin: 0; float: right; }
 
