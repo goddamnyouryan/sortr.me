@@ -1,24 +1,24 @@
 #new-entry.group
   = form_tag "entries", :method => :post, :id => "new_entry" do
   
-    h2 New Entry
+    h2 Add Me to Sortr
 
     p
-      = label_tag :name
+      = label_tag :name, "My Full Name"
       br
       = text_field_tag :name
 
 
     p
-      = label_tag :email
+      = label_tag :email, "My Email Address"
       br
       = text_field_tag :email
       
     h3 Select Tags:
 
-    p
+    p.tags.group
       -Tag.all.each do |tag|
         = check_box_tag "tags[#{tag.name}]", "#{tag.name}"
         = label_tag "tags[#{tag.name}]", "#{tag.name}"
 
-    p= submit_tag
+    p= submit_tag "Add me to Sortr!"

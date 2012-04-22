@@ -2,21 +2,22 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.create(params[:tag])
     if @tag.save
-      redirect_to root_path, :notice => "New Tag Added."
+      redirect_to root_path, :notice => "New Tag Added. Now Tag some people with it by dragging tags to their name."
     else
       render :new
     end
   end
 
   def destroy
-    @entry = Entry.find params[:entry]
     @tag = Tag.find params[:id]
-    @tagging = Tagging.find_by_tag_id_and_entry_id(@tag.id, @entry.id)
-    @tagging.destroy
-    respond_to do |format|
-      format.js
-      format.html { redirect_to root_path}
+    @taggings = Tagging.where("tag_id = ?", @tag.id)
+    unless @taggings.empty?
+      @taggings.each do |tagging|
+        tagging.destroy
+      end
     end
+    @tag.destroy
+    flash[:notice] = "Blam, you destroyed that tag.  Hopefully no one who was tagged with it minds!"
   end
   
 end

@@ -5,19 +5,23 @@ html
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"
     = csrf_meta_tags
-    
+
   body.group
-  
+
     = render :partial => "layouts/forms/new_tag"
     = render :partial => "layouts/forms/new_entry"
-      
+
+    - flash.each do |name, msg|
+      div class="alert alert-#{name == :notice ? "success" : "error" }"
+        = msg
+
     #container
-    
+
       header.group
         h1 = link_to "Sortr", root_path
-        
-        = link_to "New Tag", "#", :id => "new-tag"
-        = link_to "New Entry", "#", :id => "new-entry"
-        
+
+        = link_to "Create New Tag", "#", :id => "new-tag"
+        = link_to "Add Me to Sortr", "#", :id => "new-entry"
+
       = yield
       

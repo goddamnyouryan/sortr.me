@@ -1,10 +1,10 @@
 #new-tag.group
   = form_for Tag.new do |f|
   
-    h2 New Tag
+    h2 Create New Tag
   
     p
-      = f.label :name
+      = f.label :name, "What would you like to call this tag?"
       br
       = f.text_field :name
     

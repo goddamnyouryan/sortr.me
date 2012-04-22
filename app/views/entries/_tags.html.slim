@@ -1,3 +1,4 @@
 li
   - @tag = Tag.find_by_name(name)
-  = link_to name, tag_path(@tag, :entry => entry.id), :remote => true, :method => :delete, :class => "tag"
+  - @tagging = Tagging.find_by_tag_id_and_entry_id(@tag.id, entry.id)
+  = link_to name, '#', :remote => true, :class => "tag draggable", :id => "#{name}", "data-type" => "tagging", "data-tagging-id" => "#{@tagging.id}"

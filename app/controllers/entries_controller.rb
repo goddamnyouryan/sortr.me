@@ -42,20 +42,6 @@ class EntriesController < ApplicationController
     end
   end
   
-  def retag
-    @tag = Tag.find_by_name(params[:tag])
-    @entry = Entry.find params[:entry]
-    unless @entry.tags.include?(@tag)
-      Tagging.create( :entry_id => @entry.id, :tag_id => @tag.id)
-      respond_to do |format|
-        format.js
-        format.html { redirect_to root_path}
-      end
-    else
-      return false
-    end
-  end
-  
   def search
     @entries = Entry.where("name LIKE (?) OR email LIKE (?)", "%#{params[:input]}%", "%#{params[:input]}%")
     @emails = @entries.map(&:email).join(",")

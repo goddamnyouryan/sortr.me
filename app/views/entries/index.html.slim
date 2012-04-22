@@ -1,8 +1,12 @@
 = form_tag 'browse', :remote => true, :id => "browse" do
-  h2 Tags
+  h2 Sort by Tag
   -Tag.all.each do |tag|
     = check_box_tag "browse[#{tag.name}]", "#{tag.name}", false, :class => "browse-tags"
-    = label_tag "browse[#{tag.name}]", "#{tag.name} ", :class => "draggable", :id => "#{tag.name}"
+    = label_tag "browse[#{tag.name}]", "#{tag.name} ", :class => "draggable", :id => "#{tag.name}", "data-type" => "tag", "data-tag-id" => "#{tag.id}"
+  p.info To tag a person, drag a tag from here to their name on the right.
+  p.info Tags can be Skills, Interest, Departments, Location, or whatever else you desire.
+
+#trash Drag tag here to delete
     
 = link_to "Email All #{@entries.count}", "mailto:#{@emails}", :id => "email"
 
