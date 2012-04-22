@@ -23,8 +23,7 @@ $(document).ready ->
         taggingId = ui.draggable.attr("data-tagging-id")
         $.ajax({
           type: "DELETE",
-          url: "/taggings/" + taggingId,
-          async: false
+          url: "/taggings/" + taggingId
         })
       else if type == "tag"
         confirmation = confirm("Are you sure you want to delete this tag? Doing so will also delete all of the tag on entries.")
@@ -33,10 +32,11 @@ $(document).ready ->
           $.ajax({
             type: "DELETE",
             url: "/tags/" + tagID,
+            async: false,
             success: () ->
               window.location = "/"
           })
-        $(this).css("background-color", "#D8D6D6")
+        $(this).css("background-color", "#E99573")
   })
 
   $('ul#entries li ul li a.tag').live "click", () ->
