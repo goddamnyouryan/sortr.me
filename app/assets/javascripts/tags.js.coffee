@@ -36,7 +36,7 @@ $(document).ready ->
             success: () ->
               window.location = "/"
           })
-        $(this).css("background-color", "#E99573")
+      $(this).css("background-color", "#E99573")
   })
 
   $('ul#entries li ul li a.tag').live "click", () ->
