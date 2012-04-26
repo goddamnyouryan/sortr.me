@@ -100,7 +100,7 @@ form#new_entry p.tags {
   }
 }
 
-a#new-tag, a#new-entry, a#email, div#trash {
+a.new-tag, a#new-entry, a#email, div#trash {
   font-size: 11px;
   text-decoration: none;
   color: #297755;
@@ -111,7 +111,7 @@ div#trash {
   color: #830C0C; 
 }
 
-a#new-tag { 
+a.new-tag { 
   background: url("../assets/tag.png") no-repeat #A4DDA4 4px 4px;
   margin: 15px 0 0 148px;
   float: left;
@@ -139,13 +139,26 @@ div#trash {
 form#browse {
   float: left;
   width: 340px;
-  margin-top: 25px;
+  margin-top: 8px;
   padding: 0 20px 0 0;
   position: fixed;
-  
+
   label {
     float: left;
     margin-bottom: 10px;
+  }
+
+  header {
+    border:none;
+    padding: 0;
+
+    h2 {
+      float: left;
+    }
+    .new-tag {
+      float: right;
+      margin: 22px 0 0 0;
+    }
   }
 }
 

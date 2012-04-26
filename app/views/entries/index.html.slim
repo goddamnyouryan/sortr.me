@@ -1,5 +1,7 @@
 = form_tag 'browse', :remote => true, :id => "browse" do
-  h2 Sort by Tag
+  header.group
+    h2 Sort by Tag
+    = link_to "Create New Tag", "#", :class => "new-tag"
   -Tag.all.each do |tag|
     = check_box_tag "browse[#{tag.name}]", "#{tag.name}", false, :class => "browse-tags"
     = label_tag "browse[#{tag.name}]", "#{tag.name} ", :class => "draggable", :id => "#{tag.name}", "data-type" => "tag", "data-tag-id" => "#{tag.id}"
@@ -7,13 +9,12 @@
   p.info Tags can be Skills, Interest, Departments, Location, or whatever else you desire.
 
 #trash Drag tag here to delete
-    
+
 = link_to "Email All #{@entries.count}", "mailto:#{@emails}", :id => "email"
 
 = form_tag 'search', :remote => true, :id => "search" do
   = text_field_tag :search, nil, :placeholder => "Search..."
   = link_to "x", '#', :id => 'clear', :style => "display:none;"
-  
+
 ul#entries
   = render @entries
-      
